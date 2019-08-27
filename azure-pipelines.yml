@@ -1,13 +1,19 @@
 pool:
   vmImage: 'ubuntu-16.04' # Hosted Ubuntu 1604
-  demands: maven
+  #demands: maven
 
 steps:
-- task: Maven@3
-  displayName: 'Maven app/pom.xml'
+- task: Gradle@2
   inputs:
-    mavenPomFile: 'app/pom.xml'
-    codeCoverageToolOption: Cobertura
+    workingDirectory: ''
+    gradleWrapperFile: 'gradlew'
+    gradleOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'build'
 
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
