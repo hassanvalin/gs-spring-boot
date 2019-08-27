@@ -1,6 +1,6 @@
 pool:
   vmImage: 'ubuntu-16.04' # Hosted Ubuntu 1604
-  demands: gradlew
+  demands: gradle
 
 steps:
 - task: Gradle@2
