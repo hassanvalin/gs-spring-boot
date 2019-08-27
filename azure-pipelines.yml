@@ -1,14 +1,18 @@
 pool:
-  vmImage: 'ubuntu-16.04' # Hosted Ubuntu 1604
-  demands: Maven
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: Gradle@2
-  displayName: 'gradlew build publish'
   inputs:
-    gradleWrapperFile: '$(Parameters.wrapperScript)'
-    tasks: 'build publish'
+    workingDirectory: ''
+    gradleWrapperFile: 'gradlew'
+    gradleOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
     publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'build'
 
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
