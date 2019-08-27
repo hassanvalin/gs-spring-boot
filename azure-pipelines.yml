@@ -4,16 +4,11 @@ pool:
 
 steps:
 - task: Gradle@2
+  displayName: 'gradlew build publish'
   inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.11'
-    jdkArchitectureOption: 'x64'
+    gradleWrapperFile: '$(Parameters.wrapperScript)'
+    tasks: 'build publish'
     publishJUnitResults: false
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
 
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
