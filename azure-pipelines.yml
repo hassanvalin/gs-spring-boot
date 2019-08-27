@@ -6,6 +6,7 @@ steps:
   inputs:
     workingDirectory: ''
     gradleWrapperFile: '$(system.defaultWorkingDirectory)/IdentityService/gradlew'
+    distributionUrl=https\://services.gradle.org/distributions/gradle-5.6-bin.zip
     gradleOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
