@@ -1,3 +1,6 @@
 ---
 applications:
 - name: MY-APP
+  path: drop/app/target/gs-spring-boot-0.1.0.jar
+  buildpacks:
+  - https://github.com/cloudfoundry/java-buildpack.git
